@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>shorteningLink</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.unselectable {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			}
+		html, body {
+			height: 100%;
+		}
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background: dimgrey;
+		}
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin: 1rem;
+			height: 30rem;
+			width: 50rem;
+			background: rgba(0, 0, 0, .3);
+			border-radius: .4rem;
+		}
+		.block {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.form {
+			height: 9rem;
+		}
+		.from_input {
+			padding: 0 1rem;
+			height: 3rem;
+			width: 30rem;
+			border-radius: .4rem;
+			background:rgba(0, 0, 0, .1);
+			border: 1px solid black;
+			color: white;
+		}
+		.form_button {
+			margin-top: .5rem;
+			height: 3rem;
+			width: 10rem;
+			cursor: pointer;
+			background: rgba(255, 255, 255, .3);
+			border: 1px solid black;
+			border-radius: .4rem;
+		}
+		.form_button:hover {
+			border: 1px solid rgb(34, 195, 235);
+				}
+		.form_button:focus			 {
+			border: 1px solid rgb(34, 195, 235);
+		}
+		span {
+			color: white
+		}
+	</style>
+</head>
+<body>
+	<h1 class="unselectable">shorteningLink</h1>
+	<div class="wrapper">
+		<h2 class="unselectable">POST</h2>
+		<form class="block form" action="/postUrl" method="post">
+			<label for="enterUrl">Enter your url </label>
+			<input class="from_input" name="postUrl" id="enterUrl" type="text">
+			<button class="form_button" type="submit">SEND</button>
+		</form>
+		<div class="block">
+			<h3 class="unselectable">Your enter url</h3>
+			<span>{{ .PostInput }}</span>
+		</div>
+		<div class="block">
+			<h3 class="unselectable">Your short url</h3>
+			<span tabindex="0">{{ .PostEnter }}</span>
+		</div>
+	</div>
+	<div class="wrapper">
+		<h2 class="unselectable">GET</h2>
+		<form class="block form" action="/getUrl" method="get">
+			<label for="enterUrl">Enter your url </label>
+			<input class="from_input" name="getUrl" id="enterUrl" type="text">
+			<button class="form_button" type="submit">SEND</button>
+		</form>
+		<div class="block">
+			<h3 class="unselectable">Your enter short url</h3>
+			<span>{{ .GetInput }}</span>
+		</div>
+		<div class="block">
+			<h3 class="unselectable">Your origin url</h3>
+			<span tabindex="0">{{ .GetEnter }}</span>
+		</div>
+	</div>
+</body>
+</html>
